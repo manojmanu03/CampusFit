@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Create Account - Placement Readiness Portal</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/s1.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/header.css') }}" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/footer.css') }}" />
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header class="header auth-header">
+        <a href="/dashboard" class="logo">
+            <h1 class="logo-text">
+                CampusFit <span>🎓</span>
+            </h1>
+        </a>
+
+        <nav class="nav-links">
+            <a href="/aptitude_test" class="nav-link">
+                <i class="fas fa-brain"></i>
+                <span>Aptitude</span>
+            </a>
+
+            <a href="/technical_test" class="nav-link">
+                <i class="fas fa-code"></i>
+                <span>Technical</span>
+            </a>
+
+            <a href="/communication_test" class="nav-link">
+                <i class="fas fa-comments"></i>
+                <span>Communication</span>
+            </a>
+
+            <a href="/upload_resume" class="nav-link">
+                <i class="fas fa-file-alt"></i>
+                <span>Resume</span>
+            </a>
+
+            <a href="/results" class="nav-link">
+                <i class="fas fa-chart-bar"></i>
+                <span>Results</span>
+            </a>
+        </nav>
+    </header>
+
+    <div class="background-overlay">
+        <div class="floating-shapes">
+            <div class="shape shape-1"></div>
+            <div class="shape shape-2"></div>
+            <div class="shape shape-3"></div>
+            <div class="shape shape-4"></div>
+        </div>
+
+        <div class="login-container">
+            <div class="logo-container">
+                <div class="logo-icon">
+                    <i class="fas fa-user-plus"></i>
+                </div>
+                <h1 id='logo'>Create Account</h1>
+                <p class="subtitle">Join us to start your placement journey</p>
+            </div>
+
+            {% if error %}
+            <div class="error-message">
+                <i class="fas fa-exclamation-circle"></i>
+                {{ error }}
+            </div>
+            {% endif %}
+
+            <form action="{{ url_for('register') }}" method="post" class="login-form">
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-user input-icon"></i>
+                        <input
+                            type="text"
+                            name="username"
+                            placeholder="Choose a username"
+                            required
+                            aria-label="Username"
+                            class="animated-input"
+                        />
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope input-icon"></i>
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                            aria-label="Email"
+                            class="animated-input"
+                        />
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+
+                <div class="input-group">
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock input-icon"></i>
+                        <input
+                            type="password"
+                            name="password"
+                            placeholder="Create a password"
+                            required
+                            aria-label="Password"
+                            class="animated-input"
+                        />
+                        <div class="input-line"></div>
+                    </div>
+                </div>
+
+                <div class="options">
+                    <label class="checkbox-container">
+                        <input type="checkbox" name="terms" required />
+                        <span class="checkmark"></span>
+                        I agree to the Terms & Conditions
+                    </label>
+                </div>
+
+                <button type="submit" class="login-btn">
+                    <span class="btn-text">Create Account</span>
+                    <i class="fas fa-arrow-right btn-icon"></i>
+                </button>
+            </form>
+
+            <div class="divider">
+                <span>or</span>
+            </div>
+
+            <p class="register-link">
+                Already have an account? <a href="{{ url_for('login') }}" class="register-btn">Sign In</a>
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // Add focus animations to inputs
+        document.querySelectorAll('.animated-input').forEach(input => {
+            input.addEventListener('focus', function() {
+                this.parentElement.classList.add('focused');
+            });
+
+            input.addEventListener('blur', function() {
+                if (!this.value) {
+                    this.parentElement.classList.remove('focused');
+                }
+            });
+        });
+
+        // Add loading animation to button
+        document.querySelector('.login-form').addEventListener('submit', function(e) {
+            const btn = document.querySelector('.login-btn');
+            btn.classList.add('loading');
+            btn.querySelector('.btn-text').textContent = 'Creating Account...';
+        });
+    </script>
+
+    <footer class="animate__animated animate__fadeInUp">
+        &copy; 2025 CampusFit | Built with ❤️ for Future Achievers
+    </footer>
+</body>
+</html>
