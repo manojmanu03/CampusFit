@@ -9,3 +9,4 @@ gunicorn>=21.2
 pdfminer.six
 python-docx
 docx2txt
+PyPDF2
