@@ -1,0 +1,40 @@
+# Python cache files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Distribution/packaging
+.dist/
+dist/
+build/
+*.egg-info/
+
+# Virtual environment
+venv/
+env/
+.env/
+
+# IDE specific files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+tempCodeRunnerFile.py
+
+# Log files
+*.log
+app.log
+
+# Local ML model files (should be generated through training)
+models/*.pkl
+
+# Local development configuration
+instance/
+.env
+
+# Test coverage
+htmlcov/
+.coverage
+.coverage.*
+coverage.xml
+*.cover
