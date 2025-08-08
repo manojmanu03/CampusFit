@@ -59,10 +59,10 @@ def predict_score(input_data: Dict[str, Any]) -> Dict[str, Any]:
     """
     try:
         # Load models and preprocessing objects
-        placement_model = joblib.load("models/placement_model.pkl")
-        company_model = joblib.load("models/company_fit_model.pkl")
-        scaler = joblib.load("models/scaler.pkl")
-        feature_cols = joblib.load("models/feature_columns.pkl")
+        placement_model = joblib.load("placement_model.pkl")
+        company_model = joblib.load("company_fit_model.pkl")
+        scaler = joblib.load("scaler.pkl")
+        feature_cols = joblib.load("feature_columns.pkl")
         
         # Validate and clean input data
         validated_data = validate_input_data(input_data)
@@ -193,9 +193,9 @@ def predict_score(input_data: Dict[str, Any]) -> Dict[str, Any]:
 def get_feature_importance() -> Dict[str, Any]:
     """Get feature importance from trained models"""
     try:
-        placement_model = joblib.load("models/placement_model.pkl")
-        company_model = joblib.load("models/company_fit_model.pkl")
-        feature_cols = joblib.load("models/feature_columns.pkl")
+        placement_model = joblib.load("placement_model.pkl")
+        company_model = joblib.load("company_fit_model.pkl")
+        feature_cols = joblib.load("feature_columns.pkl")
         
         placement_importance = dict(zip(feature_cols, placement_model.feature_importances_))
         company_importance = dict(zip(feature_cols, company_model.feature_importances_))
