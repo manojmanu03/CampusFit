@@ -64,10 +64,10 @@ company_model.fit(X_train_scaled, y_company.loc[y_placement_train.index])
 print("\nSaving models...")
 
 # Save models and preprocessing objects
-joblib.dump(placement_model, 'models/placement_model.pkl')
-joblib.dump(company_model, 'models/company_fit_model.pkl')
-joblib.dump(scaler, 'models/scaler.pkl')
-joblib.dump(list(X.columns), 'models/feature_columns.pkl')
+joblib.dump(placement_model, 'placement_model.pkl')
+joblib.dump(company_model, 'company_fit_model.pkl')
+joblib.dump(scaler, 'scaler.pkl')
+joblib.dump(list(X.columns), 'feature_columns.pkl')
 
 # Print model performance
 print("\nPlacement Model Performance:")
